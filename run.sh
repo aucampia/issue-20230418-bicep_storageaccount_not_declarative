@@ -2,7 +2,7 @@
 
 set -x -eo pipefail
 
-: "${PROJECT_KEY:="fiemiu"}"
+: "${PROJECT_KEY:="axdzls"}" # chosen from `pwgen -0As 6`
 : "${AZURE_LOCATION:="westeurope"}"
 : "${AZUREAD_USER_PRINCIPAL:="iwan.aucamp@iwanaucampoutlook.onmicrosoft.com"}"
 : "${AZURE_RESOURCE_GROUP:="rg-${PROJECT_KEY}-000"}"
@@ -21,6 +21,8 @@ az group delete --name "${AZURE_RESOURCE_GROUP}" --yes || :
 az group create --location "${AZURE_LOCATION}" --name "${AZURE_RESOURCE_GROUP}"
 
 BICEP_PARAMETERS=( "--parameters" "userPrincipalId=${AZUREAD_USER_PRINCIPAL_ID}" "projectKey=${PROJECT_KEY}" )
+
+az bicep version
 
 # Deploy without networkAcls (000)
 az deployment group create --template-file without_acl.bicep "${BICEP_PARAMETERS[@]}" --resource-group "${AZURE_RESOURCE_GROUP}" --mode Complete --name "${AZURE_RESOURCE_GROUP}"

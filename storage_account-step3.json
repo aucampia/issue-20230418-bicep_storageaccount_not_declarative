@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageAccounts_stfiemiu_name": {
+    "storageAccounts_staxdzls_name": {
       "type": "String"
     }
   },
@@ -11,7 +11,7 @@
       "apiVersion": "2022-09-01",
       "kind": "StorageV2",
       "location": "westeurope",
-      "name": "[parameters('storageAccounts_stfiemiu_name')]",
+      "name": "[parameters('storageAccounts_staxdzls_name')]",
       "properties": {
         "accessTier": "Hot",
         "allowBlobPublicAccess": true,
@@ -53,9 +53,9 @@
     {
       "apiVersion": "2022-09-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_stfiemiu_name'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
       ],
-      "name": "[concat(parameters('storageAccounts_stfiemiu_name'), '/default')]",
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
       "properties": {
         "cors": {
           "corsRules": []
@@ -74,9 +74,9 @@
     {
       "apiVersion": "2022-09-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_stfiemiu_name'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
       ],
-      "name": "[concat(parameters('storageAccounts_stfiemiu_name'), '/default')]",
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
       "properties": {
         "cors": {
           "corsRules": []
@@ -98,9 +98,9 @@
     {
       "apiVersion": "2022-09-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_stfiemiu_name'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
       ],
-      "name": "[concat(parameters('storageAccounts_stfiemiu_name'), '/default')]",
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
       "properties": {
         "cors": {
           "corsRules": []
@@ -111,9 +111,9 @@
     {
       "apiVersion": "2022-09-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_stfiemiu_name'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
       ],
-      "name": "[concat(parameters('storageAccounts_stfiemiu_name'), '/default')]",
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
       "properties": {
         "cors": {
           "corsRules": []
@@ -124,10 +124,10 @@
     {
       "apiVersion": "2022-09-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_stfiemiu_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_stfiemiu_name'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_staxdzls_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
       ],
-      "name": "[concat(parameters('storageAccounts_stfiemiu_name'), '/default/captured-events')]",
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default/captured-events')]",
       "properties": {
         "defaultEncryptionScope": "$account-encryption-key",
         "denyEncryptionScopeOverride": false,

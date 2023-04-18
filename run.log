@@ -1,0 +1,988 @@
++ : axdzls
++ : westeurope
++ : iwan.aucamp@iwanaucampoutlook.onmicrosoft.com
++ : rg-axdzls-000
+++ az ad user show --id iwan.aucamp@iwanaucampoutlook.onmicrosoft.com --output tsv --query id
++ AZUREAD_USER_PRINCIPAL_ID=592c29b0-e2ed-4656-af38-76bead917dfd
+++ az account show --output tsv --query id
++ AZURE_SUBSCRIPTION_ID=e64fccb4-b9c0-4a7d-954d-c9103b46976e
++ AZURE_STORAGE_ACCOUNT_ID=/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls
++ az group delete --name rg-axdzls-000 --yes
+ERROR: (ResourceGroupNotFound) Resource group 'rg-axdzls-000' could not be found.
+Code: ResourceGroupNotFound
+Message: Resource group 'rg-axdzls-000' could not be found.
++ :
++ az group create --location westeurope --name rg-axdzls-000
+{
+  "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000",
+  "location": "westeurope",
+  "managedBy": null,
+  "name": "rg-axdzls-000",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
++ BICEP_PARAMETERS=("--parameters" "userPrincipalId=${AZUREAD_USER_PRINCIPAL_ID}" "projectKey=${PROJECT_KEY}")
++ az bicep version
+Bicep CLI version 0.16.2 (de7fdd2b33)
+
++ az deployment group create --template-file without_acl.bicep --parameters userPrincipalId=592c29b0-e2ed-4656-af38-76bead917dfd projectKey=axdzls --resource-group rg-axdzls-000 --mode Complete --name rg-axdzls-000
+{
+  "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Resources/deployments/rg-axdzls-000",
+  "location": null,
+  "name": "rg-axdzls-000",
+  "properties": {
+    "correlationId": "77084abf-3ba8-4362-a933-3e98ee8a59ae",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "staxdzls/default/captured-events",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "staxdzls/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/providers/Microsoft.Authorization/roleAssignments/98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    ],
+    "duration": "PT27.2246783S",
+    "error": null,
+    "mode": "Complete",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/providers/Microsoft.Authorization/roleAssignments/98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceGroup": "rg-axdzls-000"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "westeurope"
+      },
+      "projectKey": {
+        "type": "String",
+        "value": "axdzls"
+      },
+      "userPrincipalId": {
+        "type": "String",
+        "value": "592c29b0-e2ed-4656-af38-76bead917dfd"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "113904111619519605",
+    "templateLink": null,
+    "timestamp": "2023-04-18T16:07:25.607626+00:00",
+    "validatedResources": null
+  },
+  "resourceGroup": "rg-axdzls-000",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
++ az group export --name rg-axdzls-000 --resource-ids /subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls
++ tee storage_account-step1.json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccounts_staxdzls_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2022-09-01",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "name": "[parameters('storageAccounts_staxdzls_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_0",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow",
+          "ipRules": [],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_staxdzls_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default/captured-events')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    }
+  ],
+  "variables": {}
+}
++ az deployment group create --template-file with_acl.bicep --parameters userPrincipalId=592c29b0-e2ed-4656-af38-76bead917dfd projectKey=axdzls --resource-group rg-axdzls-000 --mode Complete --name rg-axdzls-000
+{
+  "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Resources/deployments/rg-axdzls-000",
+  "location": null,
+  "name": "rg-axdzls-000",
+  "properties": {
+    "correlationId": "9ae2536b-fa36-4ab0-927e-f4824159782c",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "staxdzls/default/captured-events",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "staxdzls/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/providers/Microsoft.Authorization/roleAssignments/98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    ],
+    "duration": "PT3.9886751S",
+    "error": null,
+    "mode": "Complete",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/providers/Microsoft.Authorization/roleAssignments/98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceGroup": "rg-axdzls-000"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "westeurope"
+      },
+      "projectKey": {
+        "type": "String",
+        "value": "axdzls"
+      },
+      "userPrincipalId": {
+        "type": "String",
+        "value": "592c29b0-e2ed-4656-af38-76bead917dfd"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "16870139497120295549",
+    "templateLink": null,
+    "timestamp": "2023-04-18T16:07:47.007551+00:00",
+    "validatedResources": null
+  },
+  "resourceGroup": "rg-axdzls-000",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
++ az group export --name rg-axdzls-000 --resource-ids /subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls
++ tee storage_account-step2.json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccounts_staxdzls_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2022-09-01",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "name": "[parameters('storageAccounts_staxdzls_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_0",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Deny",
+          "ipRules": [
+            {
+              "action": "Allow",
+              "value": "80.213.0.0/16"
+            }
+          ],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_staxdzls_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default/captured-events')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    }
+  ],
+  "variables": {}
+}
++ az deployment group create --template-file without_acl.bicep --parameters userPrincipalId=592c29b0-e2ed-4656-af38-76bead917dfd projectKey=axdzls --resource-group rg-axdzls-000 --mode Complete --name rg-axdzls-000
+{
+  "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Resources/deployments/rg-axdzls-000",
+  "location": null,
+  "name": "rg-axdzls-000",
+  "properties": {
+    "correlationId": "4cea7d13-db44-4320-8785-c42db9e80057",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "staxdzls/default/captured-events",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "staxdzls/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+            "resourceGroup": "rg-axdzls-000",
+            "resourceName": "staxdzls",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/providers/Microsoft.Authorization/roleAssignments/98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceGroup": "rg-axdzls-000",
+        "resourceName": "98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    ],
+    "duration": "PT7.1303119S",
+    "error": null,
+    "mode": "Complete",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-axdzls-000"
+      },
+      {
+        "id": "/subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls/providers/Microsoft.Authorization/roleAssignments/98a518f5-95c0-52b7-a9df-1464cbafcecf",
+        "resourceGroup": "rg-axdzls-000"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "westeurope"
+      },
+      "projectKey": {
+        "type": "String",
+        "value": "axdzls"
+      },
+      "userPrincipalId": {
+        "type": "String",
+        "value": "592c29b0-e2ed-4656-af38-76bead917dfd"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "113904111619519605",
+    "templateLink": null,
+    "timestamp": "2023-04-18T16:08:34.801233+00:00",
+    "validatedResources": null
+  },
+  "resourceGroup": "rg-axdzls-000",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
++ az group export --name rg-axdzls-000 --resource-ids /subscriptions/e64fccb4-b9c0-4a7d-954d-c9103b46976e/resourceGroups/rg-axdzls-000/providers/Microsoft.Storage/storageAccounts/staxdzls
++ tee storage_account-step3.json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccounts_staxdzls_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2022-09-01",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "name": "[parameters('storageAccounts_staxdzls_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_0",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Deny",
+          "ipRules": [
+            {
+              "action": "Allow",
+              "value": "80.213.0.0/16"
+            }
+          ],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_staxdzls_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_staxdzls_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_staxdzls_name'), '/default/captured-events')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    }
+  ],
+  "variables": {}
+}
