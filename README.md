@@ -1,4 +1,4 @@
-# Issue: Storage Account resource is not declarative
+# Issue: The Bicep storage account resource is not declarative
 
 I would expect the following sequences of operations to have the same outcome:
 
