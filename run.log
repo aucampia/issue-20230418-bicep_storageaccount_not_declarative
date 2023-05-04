@@ -1,75 +1,99 @@
-+ : zurqqd
++ : zvybqs
 + : westeurope
+++ az ad signed-in-user show --output tsv --query userPrincipalName
++ : iwan.aucamp@vipps.no
 + : rg-iwanaucamp-sandbox-000
+++ az ad user show --id iwan.aucamp@vipps.no --output tsv --query id
++ AZUREAD_USER_PRINCIPAL_ID=4ea67d70-192a-40f3-85d9-fcaa7857f95d
 ++ az account show --output tsv --query id
 + AZURE_SUBSCRIPTION_ID=c2142b5a-4808-45df-883f-2979efeac203
-+ AZURE_STORAGE_ACCOUNT_ID=/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/stzurqqd
-+ declare -p PROJECT_KEY AZURE_LOCATION AZURE_RESOURCE_GROUP AZURE_SUBSCRIPTION_ID AZURE_STORAGE_ACCOUNT_ID
-declare -x PROJECT_KEY="zurqqd"
++ AZURE_STORAGE_ACCOUNT_ID=/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs
++ declare -p PROJECT_KEY AZURE_LOCATION AZURE_RESOURCE_GROUP AZURE_SUBSCRIPTION_ID AZURE_STORAGE_ACCOUNT_ID AZUREAD_USER_PRINCIPAL AZUREAD_USER_PRINCIPAL_ID
+declare -x PROJECT_KEY="zvybqs"
 declare -- AZURE_LOCATION="westeurope"
 declare -x AZURE_RESOURCE_GROUP="rg-iwanaucamp-sandbox-000"
 declare -- AZURE_SUBSCRIPTION_ID="c2142b5a-4808-45df-883f-2979efeac203"
-declare -- AZURE_STORAGE_ACCOUNT_ID="/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/stzurqqd"
+declare -- AZURE_STORAGE_ACCOUNT_ID="/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs"
+declare -- AZUREAD_USER_PRINCIPAL="iwan.aucamp@vipps.no"
+declare -- AZUREAD_USER_PRINCIPAL_ID="4ea67d70-192a-40f3-85d9-fcaa7857f95d"
 ++ az group exists --name rg-iwanaucamp-sandbox-000
 + true
-+ BICEP_PARAMETERS=("--parameters" "projectKey=${PROJECT_KEY}")
++ BICEP_PARAMETERS=("--parameters" "userPrincipalId=${AZUREAD_USER_PRINCIPAL_ID}" "projectKey=${PROJECT_KEY}")
 + az bicep version
 Bicep CLI version 0.16.2 (de7fdd2b33)
 
 + read -p 'Press enter to continue'
-Press enter to continue+ az deployment group create --template-file without_acl.bicep --parameters projectKey=zurqqd --resource-group rg-iwanaucamp-sandbox-000 --mode Complete --name rg-iwanaucamp-sandbox-000
+Press enter to continue+ az deployment group create --template-file without_acl.bicep --parameters userPrincipalId=4ea67d70-192a-40f3-85d9-fcaa7857f95d projectKey=zvybqs --resource-group rg-iwanaucamp-sandbox-000 --mode Complete --name rg-iwanaucamp-sandbox-000
 {
   "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Resources/deployments/rg-iwanaucamp-sandbox-000",
   "location": null,
   "name": "rg-iwanaucamp-sandbox-000",
   "properties": {
-    "correlationId": "e6f6ae0a-f724-4523-b3de-72fb507ca90b",
+    "correlationId": "3c53f7ff-bf81-40dc-b0cf-45fcf175f681",
     "debugSetting": null,
     "dependencies": [
       {
         "dependsOn": [
           {
-            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd/blobServices/default",
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
             "resourceGroup": "rg-iwanaucamp-sandbox-000",
-            "resourceName": "sttmpzurqqd/default",
+            "resourceName": "sttmpzvybqs/default",
             "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
           }
         ],
-        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd/blobServices/default/containers/captured-events",
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default/containers/captured-events",
         "resourceGroup": "rg-iwanaucamp-sandbox-000",
-        "resourceName": "sttmpzurqqd/default/captured-events",
+        "resourceName": "sttmpzvybqs/default/captured-events",
         "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
       },
       {
         "dependsOn": [
           {
-            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd",
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
             "resourceGroup": "rg-iwanaucamp-sandbox-000",
-            "resourceName": "sttmpzurqqd",
+            "resourceName": "sttmpzvybqs",
             "resourceType": "Microsoft.Storage/storageAccounts"
           }
         ],
-        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd/blobServices/default",
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
         "resourceGroup": "rg-iwanaucamp-sandbox-000",
-        "resourceName": "sttmpzurqqd/default",
+        "resourceName": "sttmpzvybqs/default",
         "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/providers/Microsoft.Authorization/roleAssignments/0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
       }
     ],
-    "duration": "PT24.6905396S",
+    "duration": "PT25.7394635S",
     "error": null,
     "mode": "Complete",
     "onErrorDeployment": null,
     "outputResources": [
       {
-        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd",
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
         "resourceGroup": "rg-iwanaucamp-sandbox-000"
       },
       {
-        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd/blobServices/default",
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
         "resourceGroup": "rg-iwanaucamp-sandbox-000"
       },
       {
-        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzurqqd/blobServices/default/containers/captured-events",
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/providers/Microsoft.Authorization/roleAssignments/0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
         "resourceGroup": "rg-iwanaucamp-sandbox-000"
       }
     ],
@@ -81,7 +105,11 @@ Press enter to continue+ az deployment group create --template-file without_acl.
       },
       "projectKey": {
         "type": "String",
-        "value": "zurqqd"
+        "value": "zvybqs"
+      },
+      "userPrincipalId": {
+        "type": "String",
+        "value": "4ea67d70-192a-40f3-85d9-fcaa7857f95d"
       }
     },
     "parametersLink": null,
@@ -136,26 +164,822 @@ Press enter to continue+ az deployment group create --template-file without_acl.
             "zoneMappings": null
           }
         ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
       }
     ],
     "provisioningState": "Succeeded",
-    "templateHash": "8326585239038587764",
+    "templateHash": "17646366502629255915",
     "templateLink": null,
-    "timestamp": "2023-05-02T10:15:46.303419+00:00",
+    "timestamp": "2023-05-04T08:03:44.937925+00:00",
     "validatedResources": null
   },
   "resourceGroup": "rg-iwanaucamp-sandbox-000",
   "tags": null,
   "type": "Microsoft.Resources/deployments"
 }
-+ az group export --name rg-iwanaucamp-sandbox-000 --resource-ids /subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/stzurqqd
++ az group export --name rg-iwanaucamp-sandbox-000 --resource-ids /subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs
 + tee storage_account-step1.json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "resources": [],
+  "parameters": {
+    "storageAccounts_sttmpzvybqs_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2022-09-01",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "name": "[parameters('storageAccounts_sttmpzvybqs_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_0",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow",
+          "ipRules": [],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sttmpzvybqs_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default/captured-events')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    }
+  ],
   "variables": {}
 }
 + read -p 'Press enter to continue'
-Press enter to continue+ az deployment group create --template-file with_acl.bicep --parameters projectKey=zurqqd --resource-group rg-iwanaucamp-sandbox-000 --mode Complete --name rg-iwanaucamp-sandbox-000
+Press enter to continue+ az deployment group create --template-file with_acl.bicep --parameters userPrincipalId=4ea67d70-192a-40f3-85d9-fcaa7857f95d projectKey=zvybqs --resource-group rg-iwanaucamp-sandbox-000 --mode Complete --name rg-iwanaucamp-sandbox-000
+{
+  "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Resources/deployments/rg-iwanaucamp-sandbox-000",
+  "location": null,
+  "name": "rg-iwanaucamp-sandbox-000",
+  "properties": {
+    "correlationId": "93e92d82-4dc5-4bbe-8fe9-bbd332acfa2b",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "sttmpzvybqs/default/captured-events",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "sttmpzvybqs/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/providers/Microsoft.Authorization/roleAssignments/0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    ],
+    "duration": "PT6.8718859S",
+    "error": null,
+    "mode": "Complete",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/providers/Microsoft.Authorization/roleAssignments/0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "westeurope"
+      },
+      "projectKey": {
+        "type": "String",
+        "value": "zvybqs"
+      },
+      "userPrincipalId": {
+        "type": "String",
+        "value": "4ea67d70-192a-40f3-85d9-fcaa7857f95d"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "7259923956567025388",
+    "templateLink": null,
+    "timestamp": "2023-05-04T08:05:12.744690+00:00",
+    "validatedResources": null
+  },
+  "resourceGroup": "rg-iwanaucamp-sandbox-000",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
++ az group export --name rg-iwanaucamp-sandbox-000 --resource-ids /subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs
++ tee storage_account-step2.json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccounts_sttmpzvybqs_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2022-09-01",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "name": "[parameters('storageAccounts_sttmpzvybqs_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_0",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Deny",
+          "ipRules": [
+            {
+              "action": "Allow",
+              "value": "80.213.0.0/16"
+            }
+          ],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sttmpzvybqs_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default/captured-events')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    }
+  ],
+  "variables": {}
+}
++ read -p 'Press enter to continue'
+Press enter to continue+ az deployment group create --template-file without_acl.bicep --parameters userPrincipalId=4ea67d70-192a-40f3-85d9-fcaa7857f95d projectKey=zvybqs --resource-group rg-iwanaucamp-sandbox-000 --mode Complete --name rg-iwanaucamp-sandbox-000
+{
+  "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Resources/deployments/rg-iwanaucamp-sandbox-000",
+  "location": null,
+  "name": "rg-iwanaucamp-sandbox-000",
+  "properties": {
+    "correlationId": "2f365e0a-14f7-48bf-8e67-fb3f64564471",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "sttmpzvybqs/default/captured-events",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "sttmpzvybqs/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+            "resourceGroup": "rg-iwanaucamp-sandbox-000",
+            "resourceName": "sttmpzvybqs",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/providers/Microsoft.Authorization/roleAssignments/0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000",
+        "resourceName": "0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    ],
+    "duration": "PT4.0016117S",
+    "error": null,
+    "mode": "Complete",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/blobServices/default/containers/captured-events",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      },
+      {
+        "id": "/subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs/providers/Microsoft.Authorization/roleAssignments/0dbe58a7-efa7-5b76-9dc8-deeb97fbc398",
+        "resourceGroup": "rg-iwanaucamp-sandbox-000"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "westeurope"
+      },
+      "projectKey": {
+        "type": "String",
+        "value": "zvybqs"
+      },
+      "userPrincipalId": {
+        "type": "String",
+        "value": "4ea67d70-192a-40f3-85d9-fcaa7857f95d"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "17646366502629255915",
+    "templateLink": null,
+    "timestamp": "2023-05-04T08:06:30.736650+00:00",
+    "validatedResources": null
+  },
+  "resourceGroup": "rg-iwanaucamp-sandbox-000",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
++ az group export --name rg-iwanaucamp-sandbox-000 --resource-ids /subscriptions/c2142b5a-4808-45df-883f-2979efeac203/resourceGroups/rg-iwanaucamp-sandbox-000/providers/Microsoft.Storage/storageAccounts/sttmpzvybqs
++ tee storage_account-step3.json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccounts_sttmpzvybqs_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2022-09-01",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "name": "[parameters('storageAccounts_sttmpzvybqs_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_0",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Deny",
+          "ipRules": [
+            {
+              "action": "Allow",
+              "value": "80.213.0.0/16"
+            }
+          ],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_ZRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2022-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sttmpzvybqs_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sttmpzvybqs_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_sttmpzvybqs_name'), '/default/captured-events')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    }
+  ],
+  "variables": {}
+}

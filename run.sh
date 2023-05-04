@@ -4,13 +4,15 @@ set -x -eo pipefail
 
 : "${PROJECT_KEY:="axdzls"}" # chosen from `pwgen -0As 6`
 : "${AZURE_LOCATION:="westeurope"}"
-: "${AZURE_RESOURCE_GROUP:="rg-${PROJECT_KEY}-000"}"
+: "${AZUREAD_USER_PRINCIPAL:="$(az ad signed-in-user show --output tsv --query userPrincipalName)"}"
+: "${AZURE_RESOURCE_GROUP:="rg-tmp-${PROJECT_KEY}-000"}"
 
+AZUREAD_USER_PRINCIPAL_ID="$(az ad user show --id "${AZUREAD_USER_PRINCIPAL}" --output tsv --query 'id')"
 AZURE_SUBSCRIPTION_ID="$(az account show --output tsv --query id)"
 
-AZURE_STORAGE_ACCOUNT_ID="/subscriptions/${AZURE_SUBSCRIPTION_ID}/resourceGroups/${AZURE_RESOURCE_GROUP}/providers/Microsoft.Storage/storageAccounts/st${PROJECT_KEY}"
+AZURE_STORAGE_ACCOUNT_ID="/subscriptions/${AZURE_SUBSCRIPTION_ID}/resourceGroups/${AZURE_RESOURCE_GROUP}/providers/Microsoft.Storage/storageAccounts/sttmp${PROJECT_KEY}"
 
-1>&2 declare -p PROJECT_KEY AZURE_LOCATION AZURE_RESOURCE_GROUP AZURE_SUBSCRIPTION_ID AZURE_STORAGE_ACCOUNT_ID
+1>&2 declare -p PROJECT_KEY AZURE_LOCATION AZURE_RESOURCE_GROUP AZURE_SUBSCRIPTION_ID AZURE_STORAGE_ACCOUNT_ID AZUREAD_USER_PRINCIPAL AZUREAD_USER_PRINCIPAL_ID
 
 if ! "$(az group exists --name "${AZURE_RESOURCE_GROUP}")"
 then
@@ -18,7 +20,7 @@ then
     az group create --location "${AZURE_LOCATION}" --name "${AZURE_RESOURCE_GROUP}"
 fi
 
-BICEP_PARAMETERS=( "--parameters" "projectKey=${PROJECT_KEY}" )
+BICEP_PARAMETERS=( "--parameters" "userPrincipalId=${AZUREAD_USER_PRINCIPAL_ID}" "projectKey=${PROJECT_KEY}" )
 
 az bicep version
 
